@@ -1,4 +1,4 @@
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.List;
 
 /* The Room class has two private member variables:
@@ -20,9 +20,9 @@ public class Room {
     private String name;
     private List<Meeting> meetings;
 
-    public Room(String name, List<Meeting> meetings) {
+    public Room(String name) {
         this.name = name;
-        this.meetings = meetings;
+        this.meetings = new ArrayList<>();
     }
 
     public boolean book(int start, int end) {
