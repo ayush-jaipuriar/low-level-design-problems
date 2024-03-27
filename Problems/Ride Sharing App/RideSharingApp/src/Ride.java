@@ -61,4 +61,9 @@ public class Ride {
         this.rideStatus = rideStatus;
     }
 
+    public int calculateRideAmount(boolean isPriviledgedUser) {
+        int distance = Math.abs(destination-origin);
+        return RideUtility.calculateFare(isPriviledgedUser, distance, numOfSeats);
+    }
+
 }
