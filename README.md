@@ -1,6 +1,3 @@
-<p align="center">
-  <img src="images/lld-repo-logo.png" width="350" height="200">
-</p>
 This repository contains low level design (LLD) resources to improve object oriented design (OOD) skills.
 
 ## Fundamental Concepts
