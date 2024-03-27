@@ -6,7 +6,7 @@ public class Rider extends Person {
     // A list to store all the rides created by the rider.
     private List<Ride> ridesList;
     // The current ride being created or managed by the rider.
-    private Ride currentRide;
+    Ride currentRide;
 
     // Constructor for the Rider class, initializing the ridesList and setting the
     // name of the rider.
