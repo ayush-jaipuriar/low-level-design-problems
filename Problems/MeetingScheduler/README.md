@@ -1,18 +1,39 @@
-## Getting Started
+# Meeting Scheduler
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Design a meeting scheduler to book a meeting and return the name of the room booked.
 
-## Folder Structure
+## Goals of the System
 
-The workspace contains two folders by default, where:
+- Book a room for the meeting and return the name of the room booked
+- Maintain a history of the meetings booked
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## API
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Write an API which accepts a start time and an end time, and returns the meeting room name for the booked scheduled time.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Functionality
 
-## Dependency Management
+- When a user wants to schedule a meeting, they provide the desired start and end times to the system.
+- The system attempts to book a room for the specified time slot.
+- If the requested room is already booked by someone else, one of the following actions can be taken:
+  - The system chooses another available room for the meeting, or
+  - The user can change their preferred meeting timings.
+- If all the rooms are fully booked for the given time slot, the meeting cannot be scheduled during that time.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Classes Involved
+
+1. **Room**:
+   - Contains a name (hopefully unique) for the room.
+   - Has a function `book()` to book the room.
+   - Each room has a calendar, which is a vector of meetings.
+
+2. **Meeting**:
+   - Contains a start time and an end time for the meeting.
+   - Each meeting is tied to a specific room (a meeting cannot span across multiple rooms).
+
+3. **Scheduler**:
+   - Represents the system that the user interacts with.
+   - Keeps track of the available rooms.
+   - Has a function `book()` to book a meeting.
+
+Note: The class diagram may be modified as the implementation progresses. Additional member variables and functions may be introduced to achieve the desired objectives.
