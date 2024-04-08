@@ -8,6 +8,8 @@ public class CabBookingApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CabBookingApplication.class, args);
+		Test test = new Test();
+		test.runDemo();		
 	}
 
 }
