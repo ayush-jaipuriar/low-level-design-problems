@@ -8,7 +8,7 @@ public class Driver {
     private Location currentLocation;
     private boolean isAvailable;
 
-    public Driver() {
+    public Driver(String name2, String gender2, int age2, Vehicle vehicle2, Location currentLocationObj) {
     }
 
     public Driver(String name, String gender, int age, Vehicle vehicle, Location currentLocation, boolean isAvailable) {
