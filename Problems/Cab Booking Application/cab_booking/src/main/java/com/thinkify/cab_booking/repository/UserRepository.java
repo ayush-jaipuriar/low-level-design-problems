@@ -3,8 +3,10 @@ package com.thinkify.cab_booking.repository;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.thinkify.cab_booking.models.User;
+import org.springframework.stereotype.Repository;
 
+import com.thinkify.cab_booking.models.User;
+@Repository
 public class UserRepository {
     private Map<String, User> users = new HashMap<>();
 

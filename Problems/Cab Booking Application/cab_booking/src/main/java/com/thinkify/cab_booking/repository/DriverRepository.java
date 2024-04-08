@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.thinkify.cab_booking.models.Driver;
+import org.springframework.stereotype.Repository;
 
+import com.thinkify.cab_booking.models.Driver;
+@Repository
 public class DriverRepository {
     private Map<String, Driver> drivers = new HashMap<>();
 
