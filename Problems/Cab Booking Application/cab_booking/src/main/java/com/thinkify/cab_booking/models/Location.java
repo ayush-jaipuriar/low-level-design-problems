@@ -34,8 +34,9 @@ public class Location {
     }
 
     public double distanceFrom(Location other) {
-        // Calculate Euclidean distance between this and other location
-        return -1;
+        double dx = x - other.x;
+        double dy = y - other.y;
+        return Math.sqrt(dx * dx + dy * dy);
     }
 
 }
