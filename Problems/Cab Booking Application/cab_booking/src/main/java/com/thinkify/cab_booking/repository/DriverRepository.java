@@ -21,6 +21,7 @@ public class DriverRepository {
     }
 
     public List<Driver> getDrivers() {
-        return new ArrayList<>(drivers.values());
+        List<Driver> driverList =  new ArrayList<>(drivers.values());
+        return driverList;
     }
 }

@@ -40,6 +40,13 @@ public class RideService {
             }
         }
 
+        // Sort the available drivers based on their distance from the source
+        availableDrivers.sort((d1, d2) -> {
+            double dist1 = d1.getCurrentLocation().distanceFrom(source);
+            double dist2 = d2.getCurrentLocation().distanceFrom(source);
+            return Double.compare(dist1, dist2);
+        });
+
         return availableDrivers;
     }
 
