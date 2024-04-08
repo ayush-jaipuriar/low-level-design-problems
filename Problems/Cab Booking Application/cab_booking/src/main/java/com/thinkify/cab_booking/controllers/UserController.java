@@ -16,16 +16,12 @@ public class UserController {
     }
 
     public void addUser(String userDetails) {
-        // Parse userDetails string to extract user information
         String[] details = userDetails.split(",");
         String name = details[0].trim();
         String gender = details[1].trim();
         int age = Integer.parseInt(details[2].trim());
 
-        // Create a new User instance
         User user = new User(name, gender, age);
-
-        // Add the user to the repository
         userRepository.addUser(user);
     }
 }
