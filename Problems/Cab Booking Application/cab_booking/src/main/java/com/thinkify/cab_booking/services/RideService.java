@@ -3,6 +3,9 @@ package com.thinkify.cab_booking.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.thinkify.cab_booking.custom_exceptions.DriverNotAvailableException;
 import com.thinkify.cab_booking.custom_exceptions.DriverNotFoundException;
 import com.thinkify.cab_booking.custom_exceptions.UserNotFoundException;
@@ -13,10 +16,12 @@ import com.thinkify.cab_booking.models.User;
 import com.thinkify.cab_booking.repository.DriverRepository;
 import com.thinkify.cab_booking.repository.UserRepository;
 
+@Service
 public class RideService {
-    private UserRepository userRepository;
-    private DriverRepository driverRepository;
+    private final UserRepository userRepository;
+    private final DriverRepository driverRepository;
 
+    @Autowired
     public RideService(UserRepository userRepository, DriverRepository driverRepository) {
         this.userRepository = userRepository;
         this.driverRepository = driverRepository;
@@ -49,21 +54,11 @@ public class RideService {
             throw new DriverNotFoundException("Driver not found");
         }
 
-        // Create and return a new Ride instance
-        // Check if the driver is available and within the acceptable distance from the
-        // source
-        if (!driver.isAvailable()) {
-            throw new DriverNotAvailableException("Driver is not available");
+        if (!driver.isAvailable() || driver.getCurrentLocation().distanceFrom(source) > 5) {
+            throw new DriverNotAvailableException("Driver is not available or too far from the source");
         }
 
-        // Create a new Ride instance
-        Ride ride = new Ride();
-        ride.setUser(user);
-        ride.setDriver(driver);
-        ride.setSource(source);
-        ride.setDestination(destination);
-
-        // Mark the driver as unavailable
+        Ride ride = new Ride(user, driver, source, destination);
         driver.setAvailable(false);
 
         return ride;
