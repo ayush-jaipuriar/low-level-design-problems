@@ -33,4 +33,9 @@ public class Location {
         return "Location [x=" + x + ", y=" + y + "]";
     }
 
+    public double distanceFrom(Location other) {
+        // Calculate Euclidean distance between this and other location
+        return -1;
+    }
+
 }
