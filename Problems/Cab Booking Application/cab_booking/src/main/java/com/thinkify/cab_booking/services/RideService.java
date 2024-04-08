@@ -3,6 +3,7 @@ package com.thinkify.cab_booking.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.thinkify.cab_booking.custom_exceptions.DriverNotAvailableException;
 import com.thinkify.cab_booking.custom_exceptions.DriverNotFoundException;
 import com.thinkify.cab_booking.custom_exceptions.UserNotFoundException;
 import com.thinkify.cab_booking.models.Driver;
@@ -28,7 +29,7 @@ public class RideService {
         }
 
         List<Driver> availableDrivers = new ArrayList<>();
-        for (Driver driver : driverRepository.getDrivers().values()) {
+        for (Driver driver : driverRepository.getDrivers()) {
             if (driver.isAvailable() && driver.getCurrentLocation().distanceFrom(source) <= 5) {
                 availableDrivers.add(driver);
             }
@@ -37,7 +38,7 @@ public class RideService {
         return availableDrivers;
     }
 
-    public Ride chooseRide(String userName, String driverName, String source, String destintion) {
+    public Ride chooseRide(String userName, String driverName, Location source, Location destination) {
         User user = userRepository.getUser(userName);
         if (user == null) {
             throw new UserNotFoundException("User not found");
